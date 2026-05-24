@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viola Fabiani Ceramiche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <!-- HEADER / NAVIGAZIONE -->
+    <header>
+      <nav>
+        <span class="nav-logo">Viola Fabiani</span>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#galleria">Galleria</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- SEZIONE HERO -->
+    <section id="home">
+      <div class="hero-content">
+        <h1>Viola Fabiani Ceramiche</h1>
+        <p>Ceramiche artigianali realizzate a mano — Firenze</p>
+      </div>
+    </section>
+
+    <!-- SEZIONE GALLERIA -->
+    <section id="galleria">
+      <h2>Opere</h2>
+      <div id="gallery-grid">
+        <!-- Le card verranno generate da main.js -->
+      </div>
+    </section>
+
+    <!-- SEZIONE CONTATTI -->
+    <section id="contatti">
+      <h2>Contatti</h2>
+      <div class="contatti-wrapper">
+
+        <div class="contatti-info">
+          <p>Email: <a href="mailto:email@esempio.com">email@esempio.com</a></p>
+          <p>Instagram: <a href="https://instagram.com/handle" target="_blank">@handle</a></p>
+        </div>
+
+        <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+          <input type="text" name="name" placeholder="Il tuo nome" required />
+          <input type="email" name="email" placeholder="La tua email" required />
+          <textarea name="message" placeholder="Il tuo messaggio" rows="5" required></textarea>
+          <button type="submit">Invia</button>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Viola Fabiani — tutti i diritti riservati</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
