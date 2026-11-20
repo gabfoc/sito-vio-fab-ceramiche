@@ -261,6 +261,20 @@ footer {
    RESPONSIVE — MOBILE
 ======================== */
 @media (max-width: 600px) {
+  header {
+    padding: 0.8rem 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+    white-space: nowrap;
+  }
+
   nav ul {
     gap: 1.2rem;
   }
