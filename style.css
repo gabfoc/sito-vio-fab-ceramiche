@@ -2,7 +2,7 @@
    VARIABILI E RESET
 ======================== */
 :root {
-  --colore-sfondo: #f9f6f1;
+  --colore-sfondo: #efe6ce;
   --colore-testo: #2c2c2c;
   --colore-accento: #a0522d;
   --colore-chiaro: #e8e0d5;
@@ -90,7 +90,7 @@ nav ul a:hover {
   /* Velo color crema sopra la foto: la tiene in secondo piano
      e lascia il titolo ben leggibile. Aumentare 0.72 per schiarire di più. */
   background:
-    linear-gradient(rgba(249, 246, 241, 0.40), rgba(249, 246, 241, 0.72)),
+    linear-gradient(rgba(239, 230, 206, 0.40), rgba(239, 230, 206, 0.72)),
     url("img/foto-principale-web.jpg") center / cover no-repeat,
     var(--colore-chiaro);
   display: flex;
@@ -190,7 +190,7 @@ section h2 {
   left: 1rem;
   z-index: 1;
   padding: 0.4rem 0.8rem;
-  background-color: rgba(249, 246, 241, 0.75); /* colore sfondo, semi trasparente */
+  background-color: rgba(239, 230, 206, 0.75); /* colore sfondo, semi trasparente */
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   color: var(--colore-testo);

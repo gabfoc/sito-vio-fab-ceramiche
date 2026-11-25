@@ -17,7 +17,7 @@ async function caricaGalleria() {
       // La prima foto dell'elenco fa da copertina
       const copertina = opera.immagini && opera.immagini.length
         ? encodeURI(opera.immagini[0])
-        : "img/placeholder.jpg";
+        : "";
 
       // Etichetta solo per le opere segnate "disponibile": false nel JSON
       const etichetta = opera.disponibile === false
@@ -26,7 +26,7 @@ async function caricaGalleria() {
 
       card.innerHTML = `
         ${etichetta}
-        <img src="${copertina}" alt="${opera.titolo}" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
+        <img src="${copertina}" alt="${opera.titolo}" loading="lazy" onerror="this.onerror=null; this.style.visibility='hidden'" />
         <div class="card-info">
           <h3>${opera.titolo}</h3>
           <p>${opera.materiale}</p>
