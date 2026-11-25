@@ -2,24 +2,28 @@
   "opere": [
     {
       "id": 1,
-      "titolo": "Vaso della Sera",
-      "materiale": "Terracotta smaltata",
-      "prezzo": "85€",
-      "immagine": "img/vaso-sera.jpg"
+      "titolo": "Vaso 1",
+      "disponibile": false,
+      "materiale": "Terracotta con ingobbio nero",
+      "prezzo": "Prezzo da definire",
+      "descrizione": "Vaso a bottiglia lavorato al tornio, dal collo slanciato e la bocca svasata. La superficie nera opaca è interrotta da due fasce in terracotta naturale che lasciano a vista il colore dell'argilla.",
+      "immagini": [
+        "img/vaso 1/DSC02161.jpg",
+        "img/vaso 1/DSC02164.jpg",
+        "img/vaso 1/DSC02165.jpg"
+      ]
     },
     {
       "id": 2,
-      "titolo": "Ciotola Lunare",
-      "materiale": "Gres porcellanato",
-      "prezzo": "45€",
-      "immagine": "img/ciotola-lunare.jpg"
-    },
-    {
-      "id": 3,
-      "titolo": "Piatto delle Erbe",
-      "materiale": "Maiolica",
-      "prezzo": "60€",
-      "immagine": "img/piatto-erbe.jpg"
+      "titolo": "Vaso 2",
+      "disponibile": true,
+      "materiale": "Terracotta",
+      "prezzo": "Prezzo da definire",
+      "descrizione": "Barattolo con coperchio lavorato al tornio, dalla forma panciuta e morbida. La terracotta è velata da una finitura chiara che ne mette in risalto la texture e i segni della lavorazione.",
+      "immagini": [
+        "img/vaso 2/DSC02149.jpg",
+        "img/vaso 2/DSC02150.jpg"
+      ]
     }
   ]
 }

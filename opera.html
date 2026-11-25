@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opera — Viola Fabiani Ceramiche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <!-- HEADER / NAVIGAZIONE -->
+    <header>
+      <nav>
+        <a href="index.html" class="nav-logo"><img src="img/logo-vf.png" alt="Viola Fabiani Ceramiche" /></a>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#chi-sono">Chi sono</a></li>
+          <li><a href="index.html#opere">Opere</a></li>
+          <li><a href="index.html#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- DETTAGLIO OPERA (riempito da opera.js) -->
+    <main id="dettaglio-opera">
+      <a href="index.html#opere" class="torna-indietro">← Tutte le opere</a>
+
+      <div class="dettaglio-wrapper">
+        <div class="dettaglio-foto">
+          <img id="foto-principale" src="img/placeholder.jpg" alt="" />
+          <div id="miniature"></div>
+        </div>
+
+        <div class="dettaglio-info">
+          <h1 id="opera-titolo"></h1>
+          <p id="opera-materiale" class="opera-materiale"></p>
+          <p id="opera-descrizione" class="opera-descrizione"></p>
+          <p id="opera-prezzo" class="opera-prezzo"></p>
+          <a href="index.html#contatti" class="bottone">Contattami per acquistare</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Viola Fabiani — tutti i diritti riservati</p>
+    </footer>
+
+    <script src="opera.js"></script>
+  </body>
+</html>

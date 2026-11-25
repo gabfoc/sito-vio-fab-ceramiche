@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Arizonia&family=Jost:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -18,10 +18,11 @@
     <!-- HEADER / NAVIGAZIONE -->
     <header>
       <nav>
-        <span class="nav-logo">Viola Fabiani</span>
+        <a href="#home" class="nav-logo"><img src="img/logo-vf.png" alt="Viola Fabiani Ceramiche" /></a>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#galleria">Galleria</a></li>
+          <li><a href="#chi-sono">Chi sono</a></li>
+          <li><a href="#opere">Opere</a></li>
           <li><a href="#contatti">Contatti</a></li>
         </ul>
       </nav>
@@ -31,12 +32,30 @@
     <section id="home">
       <div class="hero-content">
         <h1>Viola Fabiani Ceramiche</h1>
-        <p>Ceramiche artigianali realizzate a mano — Firenze</p>
+        <p>Ceramiche artigianali realizzate a mano</p>
       </div>
     </section>
 
-    <!-- SEZIONE GALLERIA -->
-    <section id="galleria">
+    <!-- SEZIONE CHI SONO -->
+    <!-- TESTO SEGNAPOSTO: sostituire con la descrizione reale di Viola -->
+    <section id="chi-sono">
+      <h2>Chi sono</h2>
+      <div class="chi-sono-testo">
+        <p>
+          Sono Viola Fabiani e lavoro la ceramica a mano nel mio laboratorio.
+          Ogni pezzo nasce al tornio o modellato a mano, poi viene smaltato e
+          cotto in piccole serie: per questo non esistono due oggetti identici.
+        </p>
+        <p>
+          Realizzo soprattutto oggetti d'uso quotidiano — tazze, ciotole,
+          piatti e vasi — con forme semplici e smalti dai toni naturali, pensati
+          per durare e per essere usati ogni giorno.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEZIONE OPERE -->
+    <section id="opere">
       <h2>Opere</h2>
       <div id="gallery-grid">
         <!-- Le card verranno generate da main.js -->
@@ -49,8 +68,9 @@
       <div class="contatti-wrapper">
 
         <div class="contatti-info">
-          <p>Email: <a href="mailto:email@esempio.com">email@esempio.com</a></p>
-          <p>Instagram: <a href="https://instagram.com/handle" target="_blank">@handle</a></p>
+          <p>Email: <a href="mailto:violafabiani0@gmail.com">violafabiani0@gmail.com</a></p>
+          <p>Instagram: <a href="https://instagram.com/violafabiani_ceramiche" target="_blank">@violafabiani_ceramiche</a></p>
+          <p>Telefono: <a href="tel:+393792584190">+39 379 258 4190</a></p>
         </div>
 
         <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">

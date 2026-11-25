@@ -9,11 +9,24 @@ async function caricaGalleria() {
     const griglia = document.getElementById("gallery-grid");
 
     dati.opere.forEach((opera) => {
-      const card = document.createElement("div");
+      // Ogni card è un link alla pagina di dettaglio dell'opera
+      const card = document.createElement("a");
       card.classList.add("card");
+      card.href = `opera.html?id=${opera.id}`;
+
+      // La prima foto dell'elenco fa da copertina
+      const copertina = opera.immagini && opera.immagini.length
+        ? encodeURI(opera.immagini[0])
+        : "img/placeholder.jpg";
+
+      // Etichetta solo per le opere segnate "disponibile": false nel JSON
+      const etichetta = opera.disponibile === false
+        ? `<span class="badge-non-disponibile">Non disponibile</span>`
+        : "";
 
       card.innerHTML = `
-        <img src="${opera.immagine}" alt="${opera.titolo}" onerror="this.src='img/placeholder.jpg'" />
+        ${etichetta}
+        <img src="${copertina}" alt="${opera.titolo}" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
         <div class="card-info">
           <h3>${opera.titolo}</h3>
           <p>${opera.materiale}</p>

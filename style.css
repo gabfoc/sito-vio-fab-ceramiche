@@ -6,7 +6,10 @@
   --colore-testo: #2c2c2c;
   --colore-accento: #a0522d;
   --colore-chiaro: #e8e0d5;
-  --font-titoli: "Cormorant Garamond", serif;
+  /* Corsivo calligrafico, come la firma sul biglietto da visita */
+  --font-firma: "Arizonia", cursive;
+  /* Sans geometrico a tratto uniforme, come il monogramma VF */
+  --font-titoli: "Jost", sans-serif;
   --font-testo: "Jost", sans-serif;
 }
 
@@ -49,9 +52,14 @@ nav {
 }
 
 .nav-logo {
-  font-family: var(--font-titoli);
-  font-size: 1.4rem;
-  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 nav ul {
@@ -78,7 +86,13 @@ nav ul a:hover {
 ======================== */
 #home {
   height: 100vh;
-  background-color: var(--colore-chiaro);
+  max-width: none; /* la foto occupa tutta la larghezza dello schermo */
+  /* Velo color crema sopra la foto: la tiene in secondo piano
+     e lascia il titolo ben leggibile. Aumentare 0.72 per schiarire di più. */
+  background:
+    linear-gradient(rgba(249, 246, 241, 0.40), rgba(249, 246, 241, 0.72)),
+    url("img/foto-principale-web.jpg") center / cover no-repeat,
+    var(--colore-chiaro);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,10 +101,9 @@ nav ul a:hover {
 }
 
 .hero-content h1 {
-  font-family: var(--font-titoli);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 300;
-  font-style: italic;
+  font-family: var(--font-firma);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
@@ -112,11 +125,27 @@ section {
 
 section h2 {
   font-family: var(--font-titoli);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 300;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 400;
   margin-bottom: 3rem;
   text-align: center;
-  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+/* ========================
+   CHI SONO
+======================== */
+#chi-sono {
+  max-width: 750px;
+  scroll-margin-top: 4rem; /* compensa l'header fisso */
+}
+
+.chi-sono-testo p {
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 1.4rem;
+  text-align: center;
 }
 
 /* ========================
@@ -133,6 +162,10 @@ section h2 {
 }
 
 .card {
+  position: relative; /* riferimento per l'etichetta "Non disponibile" */
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background-color: white;
   border-radius: 2px;
   overflow: hidden;
@@ -146,9 +179,25 @@ section h2 {
 
 .card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   display: block;
+}
+
+.badge-non-disponibile {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  padding: 0.4rem 0.8rem;
+  background-color: rgba(249, 246, 241, 0.75); /* colore sfondo, semi trasparente */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--colore-testo);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
 }
 
 .card-info {
@@ -157,8 +206,10 @@ section h2 {
 
 .card-info h3 {
   font-family: var(--font-titoli);
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   margin-bottom: 0.3rem;
 }
 
@@ -172,6 +223,117 @@ section h2 {
   margin-top: 0.6rem;
   font-size: 0.9rem;
   color: var(--colore-accento);
+}
+
+/* ========================
+   PAGINA DETTAGLIO OPERA
+======================== */
+#dettaglio-opera {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 7rem 2rem 5rem; /* spazio in alto per l'header fisso */
+}
+
+.torna-indietro {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--colore-testo);
+  transition: color 0.2s;
+}
+
+.torna-indietro:hover {
+  color: var(--colore-accento);
+}
+
+.dettaglio-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+#foto-principale {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  background-color: var(--colore-chiaro);
+}
+
+#miniature {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+#miniature img {
+  width: 80px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 1px solid transparent;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+#miniature img:hover,
+#miniature img.selezionata {
+  opacity: 1;
+  border-color: var(--colore-accento);
+}
+
+.dettaglio-info {
+  position: sticky;
+  top: 7rem;
+}
+
+.dettaglio-info h1 {
+  font-family: var(--font-firma);
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.opera-materiale {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.opera-descrizione {
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.opera-prezzo {
+  font-family: var(--font-titoli);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--colore-accento);
+  margin-bottom: 2rem;
+}
+
+.bottone {
+  display: inline-block;
+  background-color: var(--colore-accento);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.bottone:hover {
+  opacity: 0.85;
 }
 
 /* ========================
@@ -271,5 +433,16 @@ footer {
 
   #gallery-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .dettaglio-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .dettaglio-info {
+    position: static;
   }
 }
