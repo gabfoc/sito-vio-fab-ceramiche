@@ -7,6 +7,12 @@
       "materiale": "Terracotta con ingobbio nero",
       "prezzo": "Prezzo da definire",
       "descrizione": "Vaso a bottiglia lavorato al tornio, dal collo slanciato e la bocca svasata. La superficie nera opaca è interrotta da due fasce in terracotta naturale che lasciano a vista il colore dell'argilla.",
+      "en": {
+        "titolo": "Vase 1",
+        "materiale": "Terracotta with black slip",
+        "prezzo": "Price to be defined",
+        "descrizione": "Wheel-thrown bottle vase with a slender neck and flared mouth. The matte black surface is broken by two bands of natural terracotta that leave the colour of the clay exposed."
+      },
       "immagini": [
         "img/vaso 1/DSC02161.jpg",
         "img/vaso 1/DSC02164.jpg",
@@ -20,6 +26,12 @@
       "materiale": "Terracotta",
       "prezzo": "Prezzo da definire",
       "descrizione": "Barattolo con coperchio lavorato al tornio, dalla forma panciuta e morbida. La terracotta è velata da una finitura chiara che ne mette in risalto la texture e i segni della lavorazione.",
+      "en": {
+        "titolo": "Vase 2",
+        "materiale": "Terracotta",
+        "prezzo": "Price to be defined",
+        "descrizione": "Wheel-thrown lidded jar with a soft, rounded body. The terracotta is veiled with a pale finish that brings out its texture and the marks of the making process."
+      },
       "immagini": [
         "img/vaso 2/DSC02149.jpg",
         "img/vaso 2/DSC02150.jpg"

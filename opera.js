@@ -1,7 +1,10 @@
 // ========================
 // PAGINA DETTAGLIO OPERA
 // Legge l'id dall'indirizzo (opera.html?id=1) e mostra l'opera corrispondente
+// t e campoOpera arrivano da lingua.js
 // ========================
+
+let operaCorrente = null; // riusata quando cambia la lingua
 
 async function caricaOpera() {
   const id = Number(new URLSearchParams(window.location.search).get("id"));
@@ -9,25 +12,41 @@ async function caricaOpera() {
   try {
     const response = await fetch("ceramiche.json");
     const dati = await response.json();
-    const opera = dati.opere.find((o) => o.id === id);
+    operaCorrente = dati.opere.find((o) => o.id === id) || null;
 
-    if (!opera) {
-      document.getElementById("opera-titolo").textContent = "Opera non trovata";
+    if (!operaCorrente) {
       document.querySelector(".dettaglio-foto").style.display = "none";
       document.querySelector(".dettaglio-info .bottone").style.display = "none";
-      return;
+    } else {
+      mostraFoto(operaCorrente);
     }
-
-    document.title = `${opera.titolo} — Viola Fabiani Ceramiche`;
-    document.getElementById("opera-titolo").textContent = opera.titolo;
-    document.getElementById("opera-materiale").textContent = opera.materiale || "";
-    document.getElementById("opera-descrizione").textContent = opera.descrizione || "";
-    document.getElementById("opera-prezzo").textContent = opera.prezzo || "";
-
-    mostraFoto(opera);
+    mostraTesti();
   } catch (errore) {
     console.error("Errore nel caricamento dell'opera:", errore);
   }
+}
+
+// Testi dell'opera nella lingua corrente
+function mostraTesti() {
+  const titoloEl = document.getElementById("opera-titolo");
+
+  if (!operaCorrente) {
+    titoloEl.textContent = t("opera.nonTrovata");
+    return;
+  }
+
+  const titolo = campoOpera(operaCorrente, "titolo");
+  document.title = `${titolo} — Viola Fabiani Ceramiche`;
+  titoloEl.textContent = titolo;
+  document.getElementById("opera-materiale").textContent = campoOpera(operaCorrente, "materiale") || "";
+  document.getElementById("opera-descrizione").textContent = campoOpera(operaCorrente, "descrizione") || "";
+  document.getElementById("opera-prezzo").textContent = campoOpera(operaCorrente, "prezzo") || "";
+
+  // Testi alternativi delle foto
+  document.getElementById("foto-principale").alt = titolo;
+  document.querySelectorAll("#miniature img").forEach((mini, i) => {
+    mini.alt = `${titolo} — ${t("opera.foto")} ${i + 1}`;
+  });
 }
 
 // Foto grande + miniature cliccabili per cambiarla
@@ -39,7 +58,6 @@ function mostraFoto(opera) {
   if (!immagini.length) return;
 
   principale.src = immagini[0];
-  principale.alt = opera.titolo;
 
   // Con una sola foto non servono le miniature
   if (immagini.length < 2) return;
@@ -47,7 +65,6 @@ function mostraFoto(opera) {
   immagini.forEach((src, i) => {
     const mini = document.createElement("img");
     mini.src = src;
-    mini.alt = `${opera.titolo} — foto ${i + 1}`;
     mini.loading = "lazy";
     if (i === 0) mini.classList.add("selezionata");
 
@@ -62,3 +79,4 @@ function mostraFoto(opera) {
 }
 
 document.addEventListener("DOMContentLoaded", caricaOpera);
+document.addEventListener("linguacambiata", mostraTesti);

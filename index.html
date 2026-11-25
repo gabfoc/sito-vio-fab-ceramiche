@@ -10,21 +10,29 @@
       href="https://fonts.googleapis.com/css2?family=Arizonia&family=Jost:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
 
     <!-- HEADER / NAVIGAZIONE -->
+    <!-- I testi con data-i18n vengono tradotti da lingua.js -->
     <header>
       <nav>
         <a href="#home" class="nav-logo"><img src="img/logo-vf.png" alt="Viola Fabiani Ceramiche" /></a>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#chi-sono">Chi sono</a></li>
-          <li><a href="#opere">Opere</a></li>
-          <li><a href="#contatti">Contatti</a></li>
+          <li><a href="#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="#chi-sono" data-i18n="nav.chiSono">Chi sono</a></li>
+          <li><a href="#opere" data-i18n="nav.opere">Opere</a></li>
+          <li><a href="#contatti" data-i18n="nav.contatti">Contatti</a></li>
         </ul>
+        <div class="lingua-switch" aria-label="Lingua / Language">
+          <button type="button" data-lingua="it" lang="it" title="Italiano">IT</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-lingua="en" lang="en" title="English">EN</button>
+        </div>
       </nav>
     </header>
 
@@ -32,21 +40,21 @@
     <section id="home">
       <div class="hero-content">
         <h1>Viola Fabiani Ceramiche</h1>
-        <p>Ceramiche artigianali realizzate a mano</p>
+        <p data-i18n="hero.sottotitolo">Ceramiche artigianali realizzate a mano</p>
       </div>
     </section>
 
     <!-- SEZIONE CHI SONO -->
-    <!-- TESTO SEGNAPOSTO: sostituire con la descrizione reale di Viola -->
+    <!-- TESTO SEGNAPOSTO: i testi (italiano e inglese) si modificano in lingua.js -->
     <section id="chi-sono">
-      <h2>Chi sono</h2>
+      <h2 data-i18n="chiSono.titolo">Chi sono</h2>
       <div class="chi-sono-testo">
-        <p>
+        <p data-i18n="chiSono.p1">
           Sono Viola Fabiani e lavoro la ceramica a mano nel mio laboratorio.
           Ogni pezzo nasce al tornio o modellato a mano, poi viene smaltato e
           cotto in piccole serie: per questo non esistono due oggetti identici.
         </p>
-        <p>
+        <p data-i18n="chiSono.p2">
           Realizzo soprattutto oggetti d'uso quotidiano — tazze, ciotole,
           piatti e vasi — con forme semplici e smalti dai toni naturali, pensati
           per durare e per essere usati ogni giorno.
@@ -56,7 +64,7 @@
 
     <!-- SEZIONE OPERE -->
     <section id="opere">
-      <h2>Opere</h2>
+      <h2 data-i18n="opere.titolo">Opere</h2>
       <div id="gallery-grid">
         <!-- Le card verranno generate da main.js -->
       </div>
@@ -64,20 +72,20 @@
 
     <!-- SEZIONE CONTATTI -->
     <section id="contatti">
-      <h2>Contatti</h2>
+      <h2 data-i18n="contatti.titolo">Contatti</h2>
       <div class="contatti-wrapper">
 
         <div class="contatti-info">
           <p>Email: <a href="mailto:violafabiani0@gmail.com">violafabiani0@gmail.com</a></p>
           <p>Instagram: <a href="https://instagram.com/violafabiani_ceramiche" target="_blank">@violafabiani_ceramiche</a></p>
-          <p>Telefono: <a href="tel:+393792584190">+39 379 258 4190</a></p>
+          <p><span data-i18n="contatti.telefono">Telefono:</span> <a href="tel:+393792584190">+39 379 258 4190</a></p>
         </div>
 
         <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
-          <input type="text" name="name" placeholder="Il tuo nome" required />
-          <input type="email" name="email" placeholder="La tua email" required />
-          <textarea name="message" placeholder="Il tuo messaggio" rows="5" required></textarea>
-          <button type="submit">Invia</button>
+          <input type="text" name="name" placeholder="Il tuo nome" data-i18n-placeholder="form.nome" required />
+          <input type="email" name="email" placeholder="La tua email" data-i18n-placeholder="form.email" required />
+          <textarea name="message" placeholder="Il tuo messaggio" data-i18n-placeholder="form.messaggio" rows="5" required></textarea>
+          <button type="submit" data-i18n="form.invia">Invia</button>
         </form>
 
       </div>
@@ -85,9 +93,10 @@
 
     <!-- FOOTER -->
     <footer>
-      <p>© 2026 Viola Fabiani — tutti i diritti riservati</p>
+      <p data-i18n="footer.diritti">© 2026 Viola Fabiani — tutti i diritti riservati</p>
     </footer>
 
+    <script src="lingua.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

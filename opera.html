@@ -10,27 +10,35 @@
       href="https://fonts.googleapis.com/css2?family=Arizonia&family=Jost:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
 
     <!-- HEADER / NAVIGAZIONE -->
+    <!-- I testi con data-i18n vengono tradotti da lingua.js -->
     <header>
       <nav>
         <a href="index.html" class="nav-logo"><img src="img/logo-vf.png" alt="Viola Fabiani Ceramiche" /></a>
         <ul>
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="index.html#chi-sono">Chi sono</a></li>
-          <li><a href="index.html#opere">Opere</a></li>
-          <li><a href="index.html#contatti">Contatti</a></li>
+          <li><a href="index.html#home" data-i18n="nav.home">Home</a></li>
+          <li><a href="index.html#chi-sono" data-i18n="nav.chiSono">Chi sono</a></li>
+          <li><a href="index.html#opere" data-i18n="nav.opere">Opere</a></li>
+          <li><a href="index.html#contatti" data-i18n="nav.contatti">Contatti</a></li>
         </ul>
+        <div class="lingua-switch" aria-label="Lingua / Language">
+          <button type="button" data-lingua="it" lang="it" title="Italiano">IT</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-lingua="en" lang="en" title="English">EN</button>
+        </div>
       </nav>
     </header>
 
     <!-- DETTAGLIO OPERA (riempito da opera.js) -->
     <main id="dettaglio-opera">
-      <a href="index.html#opere" class="torna-indietro">← Tutte le opere</a>
+      <a href="index.html#opere" class="torna-indietro" data-i18n="opera.tutte">← Tutte le opere</a>
 
       <div class="dettaglio-wrapper">
         <div class="dettaglio-foto">
@@ -43,16 +51,17 @@
           <p id="opera-materiale" class="opera-materiale"></p>
           <p id="opera-descrizione" class="opera-descrizione"></p>
           <p id="opera-prezzo" class="opera-prezzo"></p>
-          <a href="index.html#contatti" class="bottone">Per info contattami</a>
+          <a href="index.html#contatti" class="bottone" data-i18n="opera.contattami">Per info contattami</a>
         </div>
       </div>
     </main>
 
     <!-- FOOTER -->
     <footer>
-      <p>© 2026 Viola Fabiani — tutti i diritti riservati</p>
+      <p data-i18n="footer.diritti">© 2026 Viola Fabiani — tutti i diritti riservati</p>
     </footer>
 
+    <script src="lingua.js"></script>
     <script src="opera.js"></script>
   </body>
 </html>
