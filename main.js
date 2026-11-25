@@ -1,4 +1,33 @@
 // ========================
+// REFRESH → TORNA IN CIMA ALLA PAGINA
+// Al ricaricamento il browser rimetterebbe la pagina dov'era (o sulla
+// sezione indicata da #... nell'indirizzo). Solo in caso di refresh
+// riportiamo la pagina all'inizio; i link da opera.html verso
+// index.html#opere e il tasto "indietro" continuano a funzionare come prima.
+// ========================
+
+const navigazione = performance.getEntriesByType("navigation")[0];
+
+if (navigazione && navigazione.type === "reload") {
+  history.scrollRestoration = "manual";
+
+  // Toglie #sezione dall'indirizzo, così il browser non ci salta sopra
+  if (location.hash) {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+
+  window.addEventListener("load", () => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  });
+
+  // Uscendo dalla pagina ripristina il comportamento normale,
+  // così il tasto "indietro" riporta al punto in cui si era
+  window.addEventListener("pagehide", () => {
+    history.scrollRestoration = "auto";
+  });
+}
+
+// ========================
 // CARICAMENTO GALLERIA
 // ========================
 
