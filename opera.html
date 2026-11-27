@@ -10,8 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Arizonia&family=Jost:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png?v=2" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png?v=3" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=3" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -21,8 +21,8 @@
     <!-- I testi con data-i18n vengono tradotti da lingua.js -->
     <header>
       <nav>
-        <a href="index.html" class="nav-logo"><img src="img/logo-vf.png?v=2" alt="Viola Fabiani Ceramiche" /></a>
-        <ul>
+        <a href="index.html" class="nav-logo"><img src="img/logo-vf.png?v=3" alt="Viola Fabiani Ceramiche" /></a>
+        <ul id="menu-principale">
           <li><a href="index.html#home" data-i18n="nav.home">Home</a></li>
           <li><a href="index.html#chi-sono" data-i18n="nav.chiSono">Chi sono</a></li>
           <li><a href="index.html#opere" data-i18n="nav.opere">Opere</a></li>
@@ -33,6 +33,10 @@
           <span aria-hidden="true">/</span>
           <button type="button" data-lingua="en" lang="en" title="English">EN</button>
         </div>
+        <!-- Pulsante ☰ visibile solo su smartphone (gestito da menu.js) -->
+        <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu-principale">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </header>
 
@@ -62,6 +66,7 @@
     </footer>
 
     <script src="lingua.js"></script>
+    <script src="menu.js"></script>
     <script src="opera.js"></script>
   </body>
 </html>

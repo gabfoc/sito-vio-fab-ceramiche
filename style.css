@@ -116,16 +116,50 @@ nav ul a:hover {
   font-weight: 500;
 }
 
+/* Pulsante ☰: nascosto su computer, mostrato su smartphone */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px; /* allinea le linee al bordo pur con un'area di tocco ampia */
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 1.5px;
+  background-color: var(--colore-testo);
+  transition: transform 0.25s, opacity 0.2s;
+}
+
+/* ☰ → ✕ quando il menu è aperto */
+.menu-aperto .menu-toggle span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.menu-aperto .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+.menu-aperto .menu-toggle span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
 /* ========================
    HERO
 ======================== */
 #home {
   height: 100vh;
+  height: 100svh; /* su smartphone esclude le barre del browser */
   max-width: none; /* la foto occupa tutta la larghezza dello schermo */
   /* Velo color crema sopra la foto: la tiene in secondo piano
      e lascia il titolo ben leggibile. Aumentare 0.72 per schiarire di più. */
   background:
-    linear-gradient(rgba(239, 230, 206, 0.40), rgba(239, 230, 206, 0.72)),
+    linear-gradient(rgba(239, 236, 230, 0.40), rgba(239, 236, 230, 0.72)),
     url("img/foto-principale-web.jpg") center / cover no-repeat,
     var(--colore-chiaro);
   display: flex;
@@ -156,6 +190,7 @@ section {
   padding: 6rem 2rem;
   max-width: 1100px;
   margin: 0 auto;
+  scroll-margin-top: 4rem; /* compensa l'header fisso quando si arriva dal menu */
 }
 
 section h2 {
@@ -207,9 +242,13 @@ section h2 {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+/* Effetto al passaggio del mouse solo dove c'è un mouse
+   (sui touchscreen resterebbe "attivo" dopo il tocco) */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .card img {
@@ -225,7 +264,7 @@ section h2 {
   left: 1rem;
   z-index: 1;
   padding: 0.4rem 0.8rem;
-  background-color: rgba(239, 230, 206, 0.75); /* colore sfondo, semi trasparente */
+  background-color: rgba(239, 236, 230, 0.75); /* colore sfondo, semi trasparente */
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   color: var(--colore-testo);
@@ -455,37 +494,8 @@ footer {
 }
 
 /* ========================
-   RESPONSIVE — MOBILE
+   RESPONSIVE — TABLET
 ======================== */
-@media (max-width: 600px) {
-  header {
-    padding: 1rem;
-  }
-
-  nav ul {
-    gap: 0.9rem;
-  }
-
-  nav ul a {
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-  }
-
-  .lingua-switch {
-    margin-left: 0.9rem;
-    padding-left: 0.9rem;
-    font-size: 0.72rem;
-  }
-
-  .contatti-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  #gallery-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 800px) {
   .dettaglio-wrapper {
     grid-template-columns: 1fr;
@@ -494,5 +504,174 @@ footer {
 
   .dettaglio-info {
     position: static;
+  }
+}
+
+/* ========================
+   RESPONSIVE — SMARTPHONE
+======================== */
+@media (max-width: 760px) {
+  /* --- Intestazione: logo | IT/EN | ☰ --- */
+  header {
+    padding: 0.6rem 1.25rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .lingua-switch {
+    margin-left: auto;
+    margin-right: 0.5rem;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .lingua-switch button {
+    padding: 0.6rem 0.3rem; /* area di tocco più comoda */
+  }
+
+  /* Le voci del menu diventano un pannello sotto l'intestazione */
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    margin-left: 0;
+    padding: 0.5rem 1.25rem 1rem;
+    background-color: var(--colore-sfondo);
+    border-bottom: 1px solid var(--colore-chiaro);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .menu-aperto nav ul {
+    display: flex;
+  }
+
+  nav ul a {
+    display: block;
+    padding: 0.9rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--colore-chiaro);
+  }
+
+  nav ul li:last-child a {
+    border-bottom: none;
+  }
+
+  /* --- Home --- */
+  #home {
+    padding: 5rem 1.25rem 2rem;
+  }
+
+  .hero-content h1 {
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    line-height: 1.7;
+  }
+
+  /* --- Sezioni --- */
+  section {
+    padding: 4rem 1.25rem;
+  }
+
+  section h2 {
+    margin-bottom: 2rem;
+  }
+
+  .chi-sono-testo p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: left; /* più leggibile su righe corte */
+  }
+
+  /* --- Opere: due colonne affiancate --- */
+  #gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+
+  .card-info {
+    padding: 0.7rem 0.8rem 1rem;
+  }
+
+  .card-info h3 {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+  }
+
+  .card-info p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .badge-non-disponibile {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* --- Contatti --- */
+  .contatti-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contatti-info a {
+    overflow-wrap: anywhere; /* l'email lunga va a capo invece di uscire */
+  }
+
+  #contact-form input,
+  #contact-form textarea {
+    font-size: 16px; /* sotto i 16px l'iPhone ingrandisce la pagina al tocco */
+  }
+
+  #contact-form button,
+  .bottone {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* --- Pagina dettaglio opera --- */
+  #dettaglio-opera {
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  .torna-indietro {
+    margin-bottom: 1.2rem;
+  }
+
+  #miniature {
+    overflow-x: auto; /* con tante foto le miniature scorrono di lato */
+    padding-bottom: 0.3rem;
+  }
+
+  #miniature img {
+    width: 64px;
+    flex-shrink: 0;
+  }
+
+  .dettaglio-info h1 {
+    font-size: 2.6rem;
+  }
+
+  .opera-materiale,
+  .opera-descrizione,
+  .opera-prezzo {
+    margin-bottom: 1.4rem;
+  }
+
+  footer {
+    padding: 1.5rem 1.25rem;
   }
 }
